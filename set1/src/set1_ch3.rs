@@ -1,6 +1,6 @@
 use crypto_lib::utils::score_text;
 
-pub fn decipher_single_byte_xor(hex: &str) -> String {
+pub fn decipher_single_byte_xor(hex: &str) -> (f64, String) {
     let decoded = hex::decode(hex).unwrap();
 
     let mut best_score = f64::MIN;
@@ -21,7 +21,7 @@ pub fn decipher_single_byte_xor(hex: &str) -> String {
             }
         }
     }
-    best_candidate
+    (best_score, best_candidate)
 }
 
 #[cfg(test)]
@@ -34,7 +34,8 @@ mod tests {
         assert_eq!(
             decipher_single_byte_xor(
                 "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-            ),
+            )
+            .1,
             expected
         );
     }

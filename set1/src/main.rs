@@ -1,6 +1,7 @@
 mod set1_ch1;
 mod set1_ch2;
 mod set1_ch3;
+mod set1_ch4;
 
 fn main() {
     set1_ch1::hex_to_b64(
@@ -15,4 +16,6 @@ fn main() {
     set1_ch3::decipher_single_byte_xor(
         "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736",
     );
+
+    set1_ch4::solve();
 }
