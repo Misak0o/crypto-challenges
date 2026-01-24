@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 hex = "0.4"
 base64 = "0.22"
+cipher-utils = "0.3.0"
