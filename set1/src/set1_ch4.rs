@@ -20,7 +20,7 @@ mod tests {
 
     #[test]
     fn test_challenge_14() {
-        let expected = "Now that the party is jumping";
+        let expected = "Now that the party is jumping\n";
         assert_eq!(solve().1, expected);
     }
 }
