@@ -1,14 +1,22 @@
-pub fn fixed_xor(hex1: &str, hex2: &str) -> String {
-    let decoded1 = hex::decode(hex1).unwrap();
-    let decoded2 = hex::decode(hex2).unwrap();
+use crypto_lib::utils::fixed_xor;
 
-    let mut result: Vec<u8> = vec![];
+pub fn xor_fixed(hex1: &str, hex2: &str) -> String {
+    fixed_xor(hex1, hex2)
+}
 
-    for i in 0..decoded1.len() {
-        result.push(decoded1[i] ^ decoded2[i]);
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_challenge_12() {
+        let expected = "746865206b696420646f6e277420706c6179";
+        assert_eq!(
+            xor_fixed(
+                "1c0111001f010100061a024b53535009181c",
+                "686974207468652062756c6c277320657965"
+            ),
+            expected
+        );
     }
-
-    let result = hex::encode(result);
-    println!("Xored result : {}", result);
-    result
 }

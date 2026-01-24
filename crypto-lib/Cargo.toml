@@ -1,10 +1,8 @@
 [package]
-name = "set1"
+name = "crypto-lib"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 hex = "0.4"
 base64 = "0.22"
-cipher-utils = "0.3.0"
-crypto-lib = { path = "../crypto-lib" }

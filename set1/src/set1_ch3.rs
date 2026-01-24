@@ -1,20 +1,4 @@
-fn score_text(text: &str) -> f64 {
-    let frequencies = "etaoin shrdlu";
-    let mut score = 0.0;
-
-    for c in text.to_lowercase().chars() {
-        if frequencies.contains(c) {
-            score += 1.0;
-        } else if c.is_ascii_alphabetic() {
-            score += 0.1;
-        } else if c.is_ascii_whitespace() {
-            score += 0.5;
-        } else if c.is_ascii_control() {
-            score -= 10.0;
-        }
-    }
-    score
-}
+use crypto_lib::utils::score_text;
 
 pub fn decipher_single_byte_xor(hex: &str) -> String {
     let decoded = hex::decode(hex).unwrap();
@@ -37,6 +21,21 @@ pub fn decipher_single_byte_xor(hex: &str) -> String {
             }
         }
     }
-    println!("Deciphered text : {}", best_candidate);
     best_candidate
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_challenge_13() {
+        let expected = "Cooking MC's like a pound of bacon";
+        assert_eq!(
+            decipher_single_byte_xor(
+                "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
+            ),
+            expected
+        );
+    }
 }
