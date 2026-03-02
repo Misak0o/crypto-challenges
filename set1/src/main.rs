@@ -2,6 +2,7 @@ mod set1_ch1;
 mod set1_ch2;
 mod set1_ch3;
 mod set1_ch4;
+mod set1_ch5;
 
 fn main() {
     set1_ch1::hex_to_b64(
@@ -18,4 +19,9 @@ fn main() {
     );
 
     set1_ch4::solve();
+
+    set1_ch5::encrypt_repeating_key_xor(
+        "Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal",
+        "ICE",
+    );
 }
